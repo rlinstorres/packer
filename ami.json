@@ -1,0 +1,25 @@
+{
+  "builders":[{
+    "type": "docker",
+    "image": "ubuntu:16.04",
+    "export_path": "/tmp/image.tar"
+  }],
+  "provisioners":[
+    {
+      "type": "shell",
+      "inline": ["apt-get -y update && apt-get install -y curl apt-transport-https"]
+    },
+    {
+      "type": "shell",
+      "inline": ["rm -rf /tmp/* /var/lib/apt/lists/*"]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "docker-import",
+      "repository": "packer/ami",
+      "tag": "ami-0.1",
+      "only": ["docker"]
+    }
+  ]
+}

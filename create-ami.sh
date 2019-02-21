@@ -39,8 +39,8 @@ if  [ "${PACKER_JSON}" = "" ]; then
 fi
 
 # Validando e executando packer com os arquivos de configuracao #
-if [[ -n "$(which packer 2>/dev/null)" ]]; then
-  PACKER=$(which packer 2>/dev/null);
+if [[ -n "$(which /tmp/packer 2>/dev/null)" ]]; then
+  PACKER=$(which /tmp/packer 2>/dev/null);
 fi;
 
 echo "packer validate"
